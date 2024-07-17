@@ -1,12 +1,9 @@
 {
-  "homepage": "https://HabibBouzaffara.github.io/HabibBouzoffara",
-  "name": "3dfolio",
+  "name": "habib-bouzoffara-portfolio",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
