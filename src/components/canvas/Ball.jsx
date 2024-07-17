@@ -23,7 +23,7 @@ const Ball = ({ imgUrl, techName }) => {
   });
 
   return (
-    <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
+    <Float speed={1} rotationIntensity={0.5} floatIntensity={1}>
       <ambientLight intensity={0.25} />
       <directionalLight position={[0, 0, 0.05]} />
       <mesh
@@ -33,7 +33,7 @@ const Ball = ({ imgUrl, techName }) => {
         onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
       >
-        <icosahedronGeometry args={[1, 1]} />
+        <icosahedronGeometry args={[1, 1]} /> {/* Reduced complexity */}
         <meshStandardMaterial
           color='#fff8eb'
           polygonOffset
@@ -73,18 +73,17 @@ const Ball = ({ imgUrl, techName }) => {
   );
 };
 
-const BallCanvas = ({ icon, techName, preserveBuffer = true }) => {
+const BallCanvas = ({ icon, techName }) => {
   return (
     <Canvas
-      frameloop='always' // Changed to 'demand' to optimize performance
+      frameloop='always' // Keeping 'always'
       dpr={[1, 2]}
-      gl={{ preserveDrawingBuffer: preserveBuffer }}
+      gl={{ preserveDrawingBuffer: false }} // Set to false unless necessary
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls enableZoom={false} />
         <Ball imgUrl={icon} techName={techName} />
       </Suspense>
-
       <Preload all />
     </Canvas>
   );

@@ -10,9 +10,8 @@ import "react-vertical-timeline-component/style.min.css";
 import { styles } from "../styles";
 import { experiences, responsabilities, certifications } from "../constants";
 import { SectionWrapper } from "../hoc";
-import { textVariant } from "../utils/motion";
 
-const ExperienceCard = ({ experience }) => {
+const ExperienceCard = React.memo(({ experience }) => {
   return (
     <VerticalTimelineElement
       contentStyle={{
@@ -60,7 +59,7 @@ const ExperienceCard = ({ experience }) => {
         {experience.points.map((point, index) => (
           <li
             key={`experience-point-${index}`}
-            className='text-white-100 text-[14px] pl-1 tracking-wider'
+            className='text-white-100 text-[14px] pl-1 tracking-wider text-justify '
           >
             {point}
           </li>
@@ -68,9 +67,9 @@ const ExperienceCard = ({ experience }) => {
       </ul>
     </VerticalTimelineElement>
   );
-};
+});
 
-const CertificationsCircle = ({ certification, isNotMobile }) => {
+const CertificationsCircle = React.memo(({ certification, isNotMobile }) => {
   return (
     <VerticalTimelineElement
       contentArrowStyle={{
@@ -79,9 +78,9 @@ const CertificationsCircle = ({ certification, isNotMobile }) => {
       iconStyle={{
         background: "#1d1836",
         cursor: "pointer",
-        width: isNotMobile && "100px", // Increased size
-        height: isNotMobile && "100px", // Increased size
-        marginLeft: isNotMobile ? "-50px" : "0px", // Center the icon
+        width: isNotMobile && "100px",
+        height: isNotMobile && "100px",
+        marginLeft: isNotMobile ? "-50px" : "0px",
         transform: !isNotMobile && "translateY(110%)",
       }}
       iconOnClick={() => window.open(certification.link, "_blank")}
@@ -96,9 +95,14 @@ const CertificationsCircle = ({ certification, isNotMobile }) => {
       }
     />
   );
-};
+});
+
 const Experience = () => {
   const [isNotMobile, setIsNotMobile] = useState(false);
+  const [visibleExperiences, setVisibleExperiences] = useState([]);
+  const [visibleResponsabilities, setVisibleResponsabilities] = useState([]);
+  const [page, setPage] = useState(1);
+  const itemsPerPage = 5;
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width: 1170px)");
@@ -113,6 +117,32 @@ const Experience = () => {
       mediaQuery.removeEventListener("change", handleMediaQueryChange);
     };
   }, []);
+
+  useEffect(() => {
+    const loadMoreItems = () => {
+      const startIndex = (page - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      setVisibleExperiences(experiences.slice(0, endIndex));
+      setVisibleResponsabilities(responsabilities.slice(0, endIndex));
+    };
+
+    loadMoreItems();
+  }, [page]);
+
+  const handleScroll = () => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop >=
+      document.documentElement.offsetHeight - 100
+    ) {
+      setPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
       <motion.div>
@@ -126,7 +156,7 @@ const Experience = () => {
 
       <div className='mt-20 flex flex-col'>
         <VerticalTimeline>
-          {experiences.map((experience, index) => (
+          {visibleExperiences.map((experience, index) => (
             <ExperienceCard
               key={`experience-${index}`}
               experience={experience}
@@ -134,6 +164,7 @@ const Experience = () => {
           ))}
         </VerticalTimeline>
       </div>
+
       <motion.div className='mt-20'>
         <p className={`${styles.sectionSubText} text-center`}>
           Beyond the Classroom
@@ -145,9 +176,9 @@ const Experience = () => {
 
       <div className='mt-20 flex flex-col'>
         <VerticalTimeline>
-          {responsabilities.map((experience, index) => (
+          {visibleResponsabilities.map((experience, index) => (
             <ExperienceCard
-              key={`experience-${index}`}
+              key={`responsibility-${index}`}
               experience={experience}
             />
           ))}
@@ -159,7 +190,7 @@ const Experience = () => {
         <p
           className={`${styles.sectionSubText} text-center ${
             isNotMobile ? "-mb-10 mt-10 " : "transform -translate-y-8"
-          } `}
+          }`}
         >
           <a
             href='https://drive.google.com/drive/folders/1m4sPhahY62dgXc08_FkQ47nk8XlYbNMW'

@@ -131,9 +131,9 @@ const experiences = [
     iconBg: "#383E56",
     date: "February 2024 - May 2024",
     points: [
-      "Developing a solution for intelligent automation and analysis of financial data.",
-      "Developing a platform to automate accounting tasks using MERN stack and Flask micro-framework.",
-      "Integrate a system for automatic import and cleaning of invoices, accompanied by the generation of financial reports and statistics, as well as an intelligent assistance system.",
+      "Created a solution for intelligent automation and analysis of financial data.",
+      "Developed a platform to automate accounting tasks using MERN stack & Flask micro-framework.",
+      "Integrated a system for automatic import and cleaning of invoices, accompanied by the generation of financial reports and statistics, as well as an intelligent assistance system.",
     ],
     source_code_link: "github.com/HabibBouzaffara/Countopia",
   },
@@ -144,13 +144,14 @@ const experiences = [
     iconBg: "#E6DEDD",
     date: "Juin 2022 - July 2022",
     points: [
-      "Developed a static website for Gamma company as one of my first developer projects, utilizing HTML, CSS, and basic JavaScript to create a responsive and visually appealing online presence.",
+      "Developed a static website for Gamma company as one of my first developer projects, utilizing HTML, CSS, and basic JavaScript to create a responsive online presence.",
       "Managed the company's social media accounts, creating engaging content including my first video using After Effects and designing posts with Photoshop and Illustrator, enhancing my skills in digital content creation and marketing.",
       // "Implementing responsive design and ensuring cross-browser compatibility.",
       // "Participating in code reviews and providing constructive feedback to other developers.",
     ],
     source_code_link: "github.com/HabibBouzaffara/page-web-Gamma",
   },
+
   // {
   //   title: "Web Developer",
   //   company_name: "Shopify",
@@ -199,7 +200,7 @@ const responsabilities = [
     points: [
       "As vice president of the IEEE Robotics and Automation Society (RAS) chapter, I had my first taste of professional leadership.",
       "This role was a big step in my career journey. I was in charge of organizing various events and managing a team of 4 officers and 25 members.",
-      "I improved my ability to communicate clearly, work well in a team, and solve problems.",
+
       "Planning and running events taught me how to manage time and resources effectively. This experience helped me understand what it takes to lead in a professional setting and gave me confidence in my abilities.",
     ],
   },
@@ -253,7 +254,7 @@ const projects = [
     ],
     image: portfolio,
     source_code_link:
-      "https://github.com/HabibBouzaffara/HabibBouzaffara.github.io",
+      "https://github.com/HabibBouzaffara/habib-bouzoffara-portfolio",
   },
   {
     name: "Weather App",
