@@ -123,7 +123,7 @@ const Contact = () => {
           </button>
         </form>
 
-        <div className='absolute top-4 right-4 flex flex-col space-y-3 bg-black-100 p-2 rounded-lg'>
+        <div className='absolute top-4 right-4 flex flex-col space-y-2 bg-black-100 p-2 rounded-lg'>
           <a
             href='https://www.linkedin.com/in/habib-bouzoffara/'
             target='_blank'
