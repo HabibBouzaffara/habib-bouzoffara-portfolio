@@ -1,9 +1,45 @@
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
 import avatar from "../assets/avatar.png";
 
-const Hero = ({ isMobile, supportsWebGL }) => {
+const Hero = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  const [supportsWebGL, setSupportsWebGL] = useState(false);
+
+  // Function to detect WebGL support
+  const detectWebGL = () => {
+    try {
+      const canvas = document.createElement("canvas");
+      return !!(
+        window.WebGLRenderingContext &&
+        (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
+      );
+    } catch (e) {
+      return false;
+    }
+  };
+
+  useEffect(() => {
+    // Function to check if the screen width is less than or equal to 768px (tablet and phone)
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    // Initial checks
+    handleResize();
+    setSupportsWebGL(detectWebGL());
+
+    // Add event listener
+    window.addEventListener("resize", handleResize);
+
+    // Remove event listener on cleanup
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <>
       <section className={`relative w-full h-screen mx-auto`}>
@@ -33,7 +69,7 @@ const Hero = ({ isMobile, supportsWebGL }) => {
             className='absolute bottom-0 opacity-40 w-[500px] h-[500px] object-contain mx-auto z-0'
           />
         )}
-        {!isMobile && supportsWebGL && <ComputersCanvas isMobile={isMobile} />}
+        {!isMobile && supportsWebGL && <ComputersCanvas />}
 
         {!isMobile && (
           <div className='absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center z-10'>

@@ -4,7 +4,25 @@ import { SectionWrapper } from "../hoc";
 import { technologies } from "../constants";
 import { styles } from "../styles";
 import { motion } from "framer-motion";
-const Tech = ({ isMobile }) => {
+const Tech = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Add a listener for changes to the screen size
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+
+    // Set the initial value of the `isMobile` state variable
+    setIsMobile(mediaQuery.matches);
+
+    const handleMediaQueryChange = (event) => {
+      setIsMobile(event.matches);
+    };
+    mediaQuery.addEventListener("change", handleMediaQueryChange);
+    return () => {
+      mediaQuery.removeEventListener("change", handleMediaQueryChange);
+    };
+  }, []);
+
   return (
     <>
       <motion.div className='mb-20'>
@@ -29,9 +47,9 @@ const Tech = ({ isMobile }) => {
             ) : (
               <>
                 <BallCanvas icon={technology.icon} />
-                {/* <p className='text-white text-center opacity-70 text-[14px]'>
+                <p className='text-white text-center opacity-70 text-[14px]'>
                   {technology.name}
-                </p> */}
+                </p>
               </>
             )}
           </div>
