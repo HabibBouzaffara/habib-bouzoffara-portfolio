@@ -20,7 +20,13 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
-        uses: bahmutov/npm-install@v1
+        run: npm install
+
+      - name: Create .env file
+        run: |
+          echo "VITE_PORTFOLIO_APP_EMAILJS_SERVICE_ID=${{ secrets.VITE_PORTFOLIO_APP_EMAILJS_SERVICE_ID }}" >> .env
+          echo "VITE_PORTFOLIO_APP_EMAILJS_TEMPLATE_ID=${{ secrets.VITE_PORTFOLIO_APP_EMAILJS_TEMPLATE_ID }}" >> .env
+          echo "VITE_PORTFOLIO_APP_EMAILJS_PUBLIC_KEY=${{ secrets.VITE_PORTFOLIO_APP_EMAILJS_PUBLIC_KEY }}" >> .env
 
       - name: Build project
         run: npm run build
