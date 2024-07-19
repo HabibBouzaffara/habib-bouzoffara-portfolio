@@ -62,35 +62,35 @@ const Hero = () => {
             </p>
           </div>
         </div>
-
+        {(isMobile || !supportsWebGL) && (
+          <img
+            src={avatar}
+            alt='Avatar'
+            className='absolute bottom-0 opacity-40 w-[500px] h-[500px] object-contain mx-auto z-0'
+          />
+        )}
         {!isMobile && supportsWebGL && <ComputersCanvas />}
 
-        <div className='absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center'>
-          <a href='#about'>
-            <div className='w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2'>
-              <motion.div
-                animate={{
-                  y: [0, 24, 0],
-                }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  repeatType: "loop",
-                }}
-                className='w-3 h-3 rounded-full bg-secondary mb-1'
-              />
-            </div>
-          </a>
-        </div>
+        {!isMobile && (
+          <div className='absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center z-10'>
+            <a href='#about'>
+              <div className='w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2'>
+                <motion.div
+                  animate={{
+                    y: [0, 24, 0],
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    repeatType: "loop",
+                  }}
+                  className='w-3 h-3 rounded-full bg-secondary mb-1'
+                />
+              </div>
+            </a>
+          </div>
+        )}
       </section>
-
-      {(isMobile || !supportsWebGL) && (
-        <img
-          src={avatar}
-          alt='Avatar'
-          className='opacity-40 w-[500px] h-[500px] -mt-96 object-contain mx-auto'
-        />
-      )}
     </>
   );
 };
