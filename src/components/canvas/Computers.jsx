@@ -6,7 +6,7 @@ import { AnimationMixer } from "three";
 import CanvasLoader from "../Loader";
 
 const Computers = ({ isMobile }) => {
-  const computer = useGLTF("./desktop_pc/test2.glb");
+  const computer = useGLTF("./Model3d/myModel.glb");
   const mixerRef = useRef(null);
 
   useEffect(() => {

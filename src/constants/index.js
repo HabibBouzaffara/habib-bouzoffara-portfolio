@@ -135,7 +135,7 @@ const experiences = [
       "Developed a platform to automate accounting tasks using MERN stack & Flask micro-framework.",
       "Integrated a system for automatic import and cleaning of invoices, accompanied by the generation of financial reports and statistics, as well as an intelligent assistance system.",
     ],
-    source_code_link: "github.com/HabibBouzaffara/Countopia",
+    source_code_link: "https://github.com/HabibBouzaffara/Countopia",
   },
   {
     title: "Summer Internship",
@@ -149,7 +149,7 @@ const experiences = [
       // "Implementing responsive design and ensuring cross-browser compatibility.",
       // "Participating in code reviews and providing constructive feedback to other developers.",
     ],
-    source_code_link: "github.com/HabibBouzaffara/page-web-Gamma",
+    source_code_link: "https://github.com/HabibBouzaffara/page-web-Gamma",
   },
 
   // {
