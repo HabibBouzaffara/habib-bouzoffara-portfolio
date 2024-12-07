@@ -307,6 +307,74 @@ const certifications = {
   image: certificate,
 };
 
+const questions = [
+  {
+    question: "What does `NaN` stand for in JavaScript?",
+    options: [
+      "Not a Name",
+      "Not a Number",
+      "Null and Nil",
+      "None of the above",
+    ],
+    correctAnswer: "Not a Number",
+  },
+  {
+    question: "Which company developed JavaScript?",
+    options: ["Microsoft", "Sun Microsystems", "Netscape", "Google"],
+    correctAnswer: "Netscape",
+  },
+  {
+    question: "What keyword is used to declare a constant variable?",
+    options: ["var", "let", "const", "constant"],
+    correctAnswer: "const",
+  },
+  {
+    question: "Which method is used to add elements to the end of an array?",
+    options: ["push()", "pop()", "concat()", "shift()"],
+    correctAnswer: "push()",
+  },
+  {
+    question: "Which symbol is used for comments in JavaScript?",
+    options: ["//", "/* */", "#", "Both // and /* */"],
+    correctAnswer: "Both // and /* */",
+  },
+  {
+    question: "What will `typeof null` return?",
+    options: ["null", "object", "undefined", "string"],
+    correctAnswer: "object",
+  },
+  {
+    question: "Which of the following is a falsy value?",
+    options: ["0", "null", "undefined", "All of the above"],
+    correctAnswer: "All of the above",
+  },
+  {
+    question: "How can you convert a string to an integer in JavaScript?",
+    options: [
+      "parseInt()",
+      "parseFloat()",
+      "Number()",
+      "Both parseInt() and Number()",
+    ],
+    correctAnswer: "Both parseInt() and Number()",
+  },
+  {
+    question: "Which function is used to delay code execution?",
+    options: ["setTimeout()", "setInterval()", "clearTimeout()", "delay()"],
+    correctAnswer: "setTimeout()",
+  },
+  {
+    question: "What is the correct way to declare a function in JavaScript?",
+    options: [
+      "function myFunction() {}",
+      "let function = myFunction() {}",
+      "function:myFunction() {}",
+      "def myFunction() {}",
+    ],
+    correctAnswer: "function myFunction() {}",
+  },
+];
+
 export {
   services,
   technologies,
@@ -315,4 +383,5 @@ export {
   projects,
   responsabilities,
   certifications,
+  questions,
 };

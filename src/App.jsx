@@ -11,6 +11,7 @@ import {
   Projects,
   StarsCanvas,
 } from "./components";
+import Quiz from "./components/Quiz";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
         <div className='relative z-0'>
           <Contact />
           <StarsCanvas />
+          <Quiz />
         </div>
       </div>
     </BrowserRouter>
